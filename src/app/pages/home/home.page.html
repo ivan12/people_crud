@@ -1,0 +1,27 @@
+<app-navbar></app-navbar>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <app-people-list></app-people-list>
+        <app-people-form></app-people-form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer class="footer">
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <span style="color: #a2a2a2" class="ion-hide-down">Cadastrados:</span>
+      <ion-title class="ion-hide-down">{{ showTotal((products$ | async)) }}</ion-title>
+      <ion-button color="danger" class="ion-hide-down" fill="solid" (click)="createProductAction()">CRIAR NOVO CÓDIGO
+      </ion-button>
+      <ion-button color="danger" class="ion-hide-lg-up" fill="solid" (click)="createProductAction()">CRIAR NOVO
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

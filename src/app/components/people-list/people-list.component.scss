@@ -1,0 +1,131 @@
+.card-vinho {
+  border: 1px solid;
+  padding: 0px;
+  margin-left: 10px;
+}
+
+.title-vinho {
+  font-size: 18px;
+  margin-bottom: 16px;
+  max-width: 225px;
+}
+
+.foto {
+  max-width: 100px;
+  max-height: 100px;
+}
+
+.descricao {
+  margin-top: 16px;
+  font-size: 16px;
+}
+
+.scroll-styles {
+  max-height: 567px;
+  overflow: overlay;
+  padding-right: 24px;
+}
+
+.bg-color-green {
+  background: none;
+  padding: 3px;
+  margin: 5px;
+  border: 4px dashed darkgreen;
+}
+
+.bg-color-green:hover {
+  background: darkgreen;
+  padding: 3px;
+  margin: 5px;
+  border: 4px dashed #fff;
+}
+
+
+.bg-color-orange {
+  background: none;
+  padding: 3px;
+  margin: 5px;
+  border: 4px dashed #A84800;
+}
+
+.bg-color-orange:hover {
+  background: #A84800;
+  padding: 3px;
+  margin: 5px;
+  border: 4px dashed #fff;
+}
+
+
+.bg-color-red {
+  background: none;
+  padding: 3px;
+  margin: 5px;
+  border: 4px dashed darkred;
+}
+
+.bg-color-red:hover {
+  background: darkred;
+  padding: 3px;
+  margin: 5px;
+  border: 4px dashed #fff;
+}
+
+.bg-color-blue {
+  background: none;
+  padding: 3px;
+  margin: 5px;
+  border: 4px dashed #236d8b;
+}
+
+.bg-color-blue:hover {
+  background: #236d8b;
+  padding: 3px;
+  margin: 5px;
+  border: 4px dashed #fff;
+}
+
+.bg-color-yellow {
+  background: none;
+  padding: 3px;
+  margin: 5px;
+  border: 4px dashed rgba(201, 200, 28, 0.67);
+}
+
+.bg-color-yellow:hover {
+  background: rgba(201, 200, 28, 0.67);
+  padding: 3px;
+  margin: 5px;
+  border: 4px dashed #fff;
+}
+
+.box-pesquisa {
+  margin-right: 13px;
+  border: 2px dotted #236d8b;
+}
+
+.eye-disable {
+  position: absolute;
+  float: right !important;
+  margin-left: 78%;
+  margin-top: -11px;
+  background: darkred;
+  border-radius: 150px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #737373 !important;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #737373 !important;
+}

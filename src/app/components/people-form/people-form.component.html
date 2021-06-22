@@ -1,0 +1,56 @@
+<form [formGroup]="todoForm">
+  <ion-grid>
+    <ion-row *ngIf="(peopleEdit$ | async)" class="col-8 col-md-7 col-lg-6" class="scroll-styles">
+      <ion-col size="12">
+        <ion-card class="card-vinho">
+          <ion-card-header>
+            <ion-item href="#" class="bg-color-red eye-disable" (click)="clearEdit()">
+              <ion-icon name="eye-off" slot="start"></ion-icon>
+            </ion-item>
+            <ion-card-title class="title-vinho">Editar Conteúdo People</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            <ion-grid>
+              <ion-row>
+                <ion-col size="4">
+                  <ion-label>Nome:</ion-label>
+                  <ion-input class="form-control bgImput" formControlName="name" placeholder="Digite o nome">
+                  </ion-input>
+                </ion-col>
+                <ion-col size="4">
+                  <ion-label>Email:</ion-label>
+                  <ion-input class="form-control bgImput" formControlName="email" placeholder="Digite o email">
+                  </ion-input>
+                </ion-col>
+                <ion-col size="4">
+                  <ion-label>Phone:</ion-label>
+                  <ion-input class="form-control bgImput" formControlName="phone" placeholder="Digite o telefone">
+                  </ion-input>
+                </ion-col>
+                <ion-col size="4">
+                  <ion-label>Date Nasc:</ion-label>
+                  <ion-input class="form-control bgImput" formControlName="birth_at"
+                    placeholder="Digite a data de Nascimento">
+                  </ion-input>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col size="12">
+                  <ion-label>Descrição:</ion-label>
+                  <ion-textarea class="form-control bgImput" formControlName="descricao"
+                    placeholder="Digite a descrição relacionado ao codigo"></ion-textarea>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-content>
+
+          <ion-item href="#" class="bg-color-orange" (click)="edit(todoForm.value)">
+            <ion-icon name="create" slot="start"></ion-icon>
+            <ion-label>Editar</ion-label>
+          </ion-item>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</form>

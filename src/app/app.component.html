@@ -1,0 +1,15 @@
+<ion-app>
+  <ion-menu>
+    <ion-content padding>
+      <ion-list>
+        <ion-item>
+          <ion-label>Mais Info</ion-label>
+          <ion-note slot="end" color="danger" *ngIf="(peopleList$ | async) as peopleList">
+            {{ countPeople(peopleList)}}
+          </ion-note>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet main></ion-router-outlet>
+</ion-app>

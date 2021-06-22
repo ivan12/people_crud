@@ -1,0 +1,63 @@
+.card-vinho {
+  border: 2px dotted;
+  padding: 0px;
+  margin-left: 10px;
+}
+
+.scroll-styles {
+  max-height: 751px;
+  overflow: overlay;
+  padding-right: 24px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #737373 !important;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #737373 !important;
+}
+
+.bg-color-orange {
+  background: none;
+  padding: 3px;
+  margin-left: 16px;
+  margin-right: 15px;
+  margin-bottom: 14px;
+  border: 4px dashed #A84800;
+}
+
+.bg-color-orange:hover {
+  background: #A84800;
+  padding: 3px;
+  margin-left: 16px;
+  margin-right: 15px;
+  margin-bottom: 14px;
+  border: 4px dashed #fff;
+}
+
+.bgImput {
+  background-color: #a1a3a7;
+  color: black;
+  font-weight: bolder;
+  margin-top: 6px;
+}
+
+.eye-disable {
+  position: absolute;
+  float: right !important;
+  margin-left: 93%;
+  margin-top: 4px;
+  background: darkred;
+  border-radius: 150px;
+}

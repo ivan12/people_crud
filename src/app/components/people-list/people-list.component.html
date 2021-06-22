@@ -1,0 +1,66 @@
+<div class="ion-padding custom-skeleton" *ngIf="!(products$ | async)">
+  <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+  <ion-skeleton-text animated></ion-skeleton-text>
+  <ion-skeleton-text animated style="width: 88%"></ion-skeleton-text>
+  <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+  <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+</div>
+
+<ion-grid>
+  <form [formGroup]="pesquisaForm">
+    <ion-row class="col-8 col-md-7 col-lg-6 scroll-styles box-pesquisa">
+      <ion-col size="8">
+        <ion-input class="form-control bgImput" formControlName="name" placeholder="Digite o nome..."></ion-input>
+      </ion-col>
+      <ion-col size="2">
+        <ion-item href="#" class="bg-color-blue" (click)="pesquisar(pesquisaForm.value)">
+          <ion-icon name="search" slot="start"></ion-icon>
+          <ion-label>Pesquisar</ion-label>
+        </ion-item>
+      </ion-col>
+
+      <ion-col size="2">
+        <ion-item href="#" class="bg-color-yellow" (click)="recarregarLista()">
+          <ion-icon name="refresh" slot="start"></ion-icon>
+          <ion-label>Recarregar </ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-grid>
+
+<ion-grid *ngIf="(products$ | async)">
+  <ion-row class="col-8 col-md-7 col-lg-6 scroll-styles" *ngIf="(peopleList$ | async) as peopleList">
+    <ion-col size="12" style="max-height: 100px;" *ngFor="let people of (peopleList$ | async) as peopleList">
+      <ion-card class="card-vinho">
+        <ion-row class="col-12">
+
+          <ion-col size="3">
+            <h2>{{ people.id }} - {{ people.nome }}</h2>
+          </ion-col>
+
+          <ion-col size="3">
+            <div class="descricao">
+              {{ people.descricao }}
+            </div>
+          </ion-col>
+
+          <ion-col size="2">
+            <ion-item href="#" class="bg-color-red" (click)="setIndisponivel(people)">
+              <ion-icon name="trash" slot="start"></ion-icon>
+              <ion-label>Remover</ion-label>
+            </ion-item>
+          </ion-col>
+
+          <ion-col size="2">
+            <ion-item href="#" class="bg-color-orange" (click)="loadEdit(people)">
+              <ion-icon name="create" slot="start"></ion-icon>
+              <ion-label>Edit</ion-label>
+            </ion-item>
+          </ion-col>
+
+        </ion-row>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>
