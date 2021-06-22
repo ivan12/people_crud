@@ -7,16 +7,13 @@ import { PeopleState } from "../../people.module";
 })
 export class PeopleService {
   public url = 'https://forassetapi.herokuapp.com/people';
-  private params = {};
-  private headers = {};
-
-
+  
   constructor(
     private http: HttpClient
   ) { }
 
   getPeopleList() {
-    return this.http.get<PeopleState[]>(`${this.url}`, this.params, this.headers);
+    return this.http.get<PeopleState[]>(`${this.url}`);
   }
 
   create(codeAlarm: any) {
