@@ -16,16 +16,16 @@ export class PeopleService {
     return this.http.get<PeopleState[]>(`${this.url}`);
   }
 
-  create(codeAlarm: any) {
-    return this.http.post(this.url, codeAlarm);
+  create(people: any) {
+    return this.http.post(this.url, people);
   };
 
-  edit(codeAlarm: any) {
-    return this.http.post(this.url + '/', codeAlarm.id);
+  edit(people: any) {
+    return this.http.post(this.url + '/', people.id);
   };
 
-  remove(codeAlarm: any) {
-    return this.http.delete(this.url + '/', codeAlarm.id);
+  remove(people: any) {
+    return this.http.delete(this.url + '/', people.id);
   };
 
 }

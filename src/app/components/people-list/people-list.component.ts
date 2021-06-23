@@ -26,16 +26,17 @@ export class PeopleListComponent implements OnInit {
 
   ngOnInit() {
     this.inicializarForm();
-    this.loadVinhos()
+    this.recarregarLista()
+    this.loadPeopleList()
   }
 
   inicializarForm() {
     this.pesquisaForm = this.formBuilder.group({
-      nome: [null, Validators.required]
+      name: [null, Validators.required]
     });
   }
 
-  loadVinhos() {
+  loadPeopleList() {
     this.peopleList$ = this.store.select(PeopleSelector.peopleList);
   }
 
