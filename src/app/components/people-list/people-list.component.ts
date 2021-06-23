@@ -1,7 +1,6 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { ToastController } from '@ionic/angular';
 import { PeopleSelector } from "../../_store/_modules/people/people.selector";
 import { PeopleAction } from "../../_store/_modules/people/people.action";
 import { PeopleState } from "../../_store/people.module";
@@ -20,14 +19,12 @@ export class PeopleListComponent implements OnInit {
 
   constructor(
     private store: Store<PeopleState>,
-    private toastCtrl: ToastController,
     private formBuilder: FormBuilder
   ) { }
 
   ngOnInit() {
     this.inicializarForm();
     this.store.dispatch(PeopleAction.loadListEffect({ payload: null }));
-
     this.loadPeopleList()
   }
 
@@ -54,27 +51,16 @@ export class PeopleListComponent implements OnInit {
   }
 
   pesquisar(value) {
-    this.store.dispatch(PeopleAction.pesquisar({ payload: value }));
+    console.log('pesquisar value = ', value)
+    this.store.dispatch(PeopleAction.pesquisar({ payload: value.name }));
   }
 
   setIndisponivel(people) {
     this.store.dispatch(PeopleAction.desativarEffect({ payload: people }));
-    this.toast('People excluído com sucesso!');
   }
 
   recarregarLista() {
     this.inicializarForm();
     this.store.dispatch(PeopleAction.loadListEffect({ payload: null }));
-  }
-
-  async toast(msg) {
-    const toast = await this.toastCtrl.create({
-      message: msg,
-      duration: 2000,
-      cssClass: "toast-red",
-      showCloseButton: true,
-      closeButtonText: "Fechar"
-    });
-    toast.present();
   }
 }
