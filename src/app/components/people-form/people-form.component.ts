@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 import { PeopleSelector } from "../../_store/_modules/people/people.selector";
 import { PeopleAction } from "../../_store/_modules/people/people.action";
 import { PeopleState } from "../../_store/people.module";
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-people-form',
@@ -19,12 +20,17 @@ export class PeopleFormComponent implements OnInit {
 
   constructor(
     private store: Store<PeopleState>,
-    private formBuilder: FormBuilder,
+    private formBuilder: FormBuilder
   ) {
     this.inicializarForm();
   }
 
   async ngOnInit() {
+    this.loadEdit()
+    
+  }
+
+  loadEdit() {
     this.peopleEdit$ = this.store.select(PeopleSelector.people);
 
     this.peopleEdit$.pipe(
@@ -35,8 +41,7 @@ export class PeopleFormComponent implements OnInit {
           console.log(error)
         }
       })
-    )
-      .subscribe();
+    ).subscribe();
   }
 
   inicializarForm() {
@@ -55,6 +60,6 @@ export class PeopleFormComponent implements OnInit {
   }
 
   clearEdit() {
-    this.store.dispatch(PeopleAction.clearEdit({ payload: null }));
+    this.store.dispatch(PeopleAction.edit({ payload: null }));
   }
 }

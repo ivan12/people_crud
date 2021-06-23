@@ -5,15 +5,15 @@ import { PeopleState } from "../../people.module";
 export namespace PeopleReducer {
     let peopleList: PeopleState[] = [];
 
-    const _pesquisar = (state: any, action: Action) => ({ ...state, codeAlarms: state.codeAlarms.filter(codeAlarm => codeAlarm.codigo == action['payload']) });
+    const _pesquisar = (state: any, action: Action) => ({ ...state, peopleList: state.peopleList.filter(people => people.name == action['payload']) });
 
-    const _addPeople = (state: any, action: Action) => ({ ...state, codeAlarms: state.codeAlarms.concat(action['payload']) });
+    const _addPeople = (state: any, action: Action) => ({ ...state, peopleList: state.peopleList.concat(action['payload']) });
 
-    const _setPeople = (state: any, action: Action) => ({ ...state, codeAlarm: action['payload'] });
+    const _setPeople = (state: any, action: Action) => ({ ...state, people: action['payload'] });
 
-    const _removePeople = (state: any, action: Action) => ({ ...state, codeAlarms: state.codeAlarms.filter(myProduct => myProduct != action['payload']) });
+    const _removePeople = (state: any, action: Action) => ({ ...state, peopleList: state.peopleList.filter(people => people != action['payload']) });
 
-    const _setPeopleList = (state: any, action: Action) => ({ ...state, codeAlarms: action['payload'] });
+    const _setPeopleList = (state: any, action: Action) => ({ ...state, peopleList: action['payload'] });
 
     function editElemListCodeAlarms(listPeople, index, people) {
         listPeople[index] = people;

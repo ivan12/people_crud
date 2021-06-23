@@ -26,7 +26,8 @@ export class PeopleListComponent implements OnInit {
 
   ngOnInit() {
     this.inicializarForm();
-    this.recarregarLista()
+    this.store.dispatch(PeopleAction.loadListEffect({ payload: null }));
+
     this.loadPeopleList()
   }
 
@@ -53,7 +54,7 @@ export class PeopleListComponent implements OnInit {
   }
 
   pesquisar(value) {
-    this.store.dispatch(PeopleAction.pesquisar({ payload: Number(value.nome) }));
+    this.store.dispatch(PeopleAction.pesquisar({ payload: value }));
   }
 
   setIndisponivel(people) {

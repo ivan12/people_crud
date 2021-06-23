@@ -3,23 +3,28 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, exhaustMap, map } from 'rxjs/operators';
 import { PeopleService } from "./people.service";
 import { PeopleAction } from "./people.action";
+import { ToastController } from '@ionic/angular';
 
 @Injectable()
 export class PeopleEffect {
     constructor(
         private actions$: Actions,
-        private codeAlarmService: PeopleService,
+        private toastCtrl: ToastController,
+        private peopleService: PeopleService,
     ) { }
 
     getListEffect$ = createEffect(() =>
         this.actions$.pipe(
             ofType(PeopleAction.loadListEffect),
             map(action => action['payload']),
-            // catchError(error => error),
-            exhaustMap(res => this.codeAlarmService.getPeopleList()),
-            map(peopleList => {
-                return PeopleAction.set({ payload: peopleList });
-            })
+            exhaustMap(_ => this.peopleService.getPeopleList()
+                .pipe(
+                    map(peopleListTemp => {
+                        console.log('peopleListTemp = ', peopleListTemp)
+                        return PeopleAction.setList({ payload: peopleListTemp });
+                    })
+                ),
+            )
         ),
     );
 
@@ -28,10 +33,13 @@ export class PeopleEffect {
             ofType(PeopleAction.editEffect),
             map(action => action['payload']),
             catchError(error => error),
-            exhaustMap(product => this.codeAlarmService.edit(product)
+            exhaustMap(peopleEdit => this.peopleService.edit(peopleEdit)
                 .pipe(
-                    map(product => {
-                        PeopleAction.edit({ payload: product });
+                    map(peopleResult => {
+                        if (peopleResult) {
+                            this.toastSucesso('People editado com sucesso!');
+                        }
+                        PeopleAction.edit({ payload: peopleResult });
                         return PeopleAction.loadListEffect({ payload: null });
                     })
                 )
@@ -44,10 +52,13 @@ export class PeopleEffect {
             ofType(PeopleAction.addEffect),
             map(action => action['payload']),
             catchError(error => error),
-            exhaustMap(product => this.codeAlarmService.create(product)
+            exhaustMap(product => this.peopleService.create(product)
                 .pipe(
-                    map(product => {
-                        PeopleAction.add({ payload: product });
+                    map(people => {
+                        if (people) {
+                            this.toastSucesso('People salvo com sucesso!');
+                        }
+                        PeopleAction.add({ payload: people });
                         return PeopleAction.loadListEffect({ payload: null });
                     })
                 )
@@ -60,11 +71,38 @@ export class PeopleEffect {
             ofType(PeopleAction.desativarEffect),
             map(action => action['payload']),
             catchError(error => error),
-            exhaustMap(product => this.codeAlarmService.remove(product)
+            exhaustMap(product => this.peopleService.remove(product)
                 .pipe(
-                    map(product => PeopleAction.loadListEffect({ payload: null }))
+                    map(peopleResult => {
+                        if (peopleResult) {
+                            this.toastSucesso('People excluido com sucesso!');
+                        }
+                        return PeopleAction.loadListEffect({ payload: null })
+                    })
                 )
             )
         )
     );
+
+    async toastSucesso(msg) {
+        const toast = await this.toastCtrl.create({
+            message: msg,
+            duration: 2000,
+            cssClass: "toast-green",
+            showCloseButton: true,
+            closeButtonText: "Fechar"
+        });
+        toast.present();
+    }
+
+    async toastError(msg) {
+        const toast = await this.toastCtrl.create({
+            message: msg,
+            duration: 2000,
+            cssClass: "toast-green",
+            showCloseButton: true,
+            closeButtonText: "Fechar"
+        });
+        toast.present();
+    }
 }

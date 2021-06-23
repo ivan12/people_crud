@@ -18,14 +18,14 @@ export class PeopleService {
 
   create(people: any) {
     return this.http.post(this.url, people);
-  };
+  }
 
   edit(people: any) {
-    return this.http.post(this.url + '/', people.id);
-  };
+    return this.http.put(this.url + '/' + people.id, people);
+  }
 
   remove(people: any) {
-    return this.http.delete(this.url + '/', people.id);
-  };
+    return this.http.delete(this.url + '/' + people.id);
+  }
 
 }

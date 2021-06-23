@@ -26,6 +26,14 @@
   padding-right: 24px;
 }
 
+.ml-5 {
+  margin-left: 5px;
+}
+
+.ml-10 {
+  margin-left: 10px;
+}
+
 .bg-color-green {
   background: none;
   padding: 3px;
@@ -40,21 +48,19 @@
   border: 4px dashed #fff;
 }
 
-
 .bg-color-orange {
   background: none;
   padding: 3px;
   margin: 5px;
-  border: 4px dashed #A84800;
+  border: 4px dashed #a84800;
 }
 
 .bg-color-orange:hover {
-  background: #A84800;
+  background: #a84800;
   padding: 3px;
   margin: 5px;
   border: 4px dashed #fff;
 }
-
 
 .bg-color-red {
   background: none;
