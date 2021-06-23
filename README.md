@@ -1,15 +1,15 @@
-# people_crud
+# People Crud
 
 Angular 8, Ionic
 
-# install
+# Install
 
 ```
 npm i
 
 ```
 
-# run
+# Run
 
 ```
 ionic serve
